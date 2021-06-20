@@ -5,7 +5,11 @@
     <div class="separator"/>
     <Summary v-if="loaded" :occupation="occupation" :summary="summary"/>
     <div class="separator"/>
-    <RelatedIndustries v-if="loaded" :occupation="occupation" :employingIndustries="employingIndustries"/>
+    <RelatedIndustries 
+      v-if="loaded" 
+      :occupation="occupation" 
+      :employingIndustries="employingIndustries"
+    />
   </div>
 </template>
 

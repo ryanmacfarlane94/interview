@@ -10,10 +10,16 @@
           <th class="col-14">% of Total Jobs in Industry ({{employingIndustries.year}})</th>
         </tr>
         <tr v-for="item in employingIndustries.industries" v-bind:key="item.naics">
-          <td>Test</td>
-          <td>{{ item.in_occupation_jobs }}</td>
-          <td></td>
-          <td></td>
+          <!--Set Css Variables for Percent-->
+          <td class="col-58" :style="{
+              '--percent':getOccupationPercent(item.in_occupation_jobs,totalJobs) + '%'
+            }">
+            <div class="bar"></div>
+            <div class="text">{{ item.title }}</div>
+          </td>
+          <td class="col-14">{{ item.in_occupation_jobs }}</td>
+          <td class="col-14">{{ getOccupationPercent(item.in_occupation_jobs,employingIndustries.jobs) }}%</td>
+          <td class="col-14">{{ getOccupationPercent(item.in_occupation_jobs,item.jobs) }}%</td>
         </tr>
       </table>
     </div>
@@ -29,14 +35,22 @@ export default {
       occupation: String,
       employingIndustries: Object
   },
+  data: function () {
+    return {
+      percent:0,
+      totalJobs:0
+    }
+  },
   mounted: function () {
-
+    for (var i = 0;i < this.employingIndustries.industries.length;i++) {
+      this.totalJobs += this.employingIndustries.industries[i].in_occupation_jobs;
+    }
   },
   methods: {
     getOccupationPercent(jobs, total_jobs) {
-      var result = jobs / total_jobs;
-      return result.toFixed(2); 
-    }
+      var result = jobs / total_jobs * 100;
+      return result.toFixed(1); 
+    },
   }
 }
 </script>

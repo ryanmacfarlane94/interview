@@ -22,7 +22,7 @@ h1 {
 }
 
 h2 {
-    font-size: 1.1rem;
+    font-size: 1.3rem;
 }
 
 .green {
@@ -42,5 +42,6 @@ h2 {
     -moz-osx-font-smoothing: grayscale;
     line-height: 1.625;
     font-weight: 500;
+    font-size:1.1rem;
 }
 

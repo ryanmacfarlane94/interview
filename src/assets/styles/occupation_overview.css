@@ -1,0 +1,46 @@
+/*formatting*/
+.container {
+    text-align:left;
+    margin:auto;
+    margin-top:20px;
+    margin-bottom:20px;
+}
+
+.separator {
+    margin-bottom:25px;
+}
+
+.center {
+    text-align:center;
+    margin:auto;
+}
+
+
+/*fonts*/
+h1 {
+    font-size: 1.8rem;
+}
+
+h2 {
+    font-size: 1.1rem;
+}
+
+.green {
+    color:#33cc33;
+}
+
+.red {
+    color:#ff3333;
+}
+
+#app {
+    font-family: "Sailec", sans-serif;
+    --text-opacity: 1;
+    color: #204354;
+    color: rgba(32, 67, 84, var(--text-opacity));
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1.625;
+    font-weight: 500;
+}
+

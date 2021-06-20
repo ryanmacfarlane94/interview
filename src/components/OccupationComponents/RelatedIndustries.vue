@@ -17,7 +17,7 @@
             <div class="bar"></div>
             <div class="text">{{ item.title }}</div>
           </td>
-          <td class="col-14">{{ item.in_occupation_jobs }}</td>
+          <td class="col-14">{{ item.in_occupation_jobs.toLocaleString() }}</td>
           <td class="col-14">{{ getOccupationPercent(item.in_occupation_jobs,employingIndustries.jobs) }}%</td>
           <td class="col-14">{{ getOccupationPercent(item.in_occupation_jobs,item.jobs) }}%</td>
         </tr>
@@ -49,7 +49,7 @@ export default {
   methods: {
     getOccupationPercent(jobs, total_jobs) {
       var result = jobs / total_jobs * 100;
-      return result.toFixed(1); 
+      return result.toFixed(1).toLocaleString(); 
     },
   }
 }

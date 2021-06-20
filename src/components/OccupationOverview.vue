@@ -3,8 +3,13 @@
     <h1><strong>Occupation Overview</strong></h1>
     <span>{{this.occupation}} in {{this.region}}</span>
     <div class="separator"/>
+    
     <Summary v-if="loaded" :occupation="occupation" :summary="summary"/>
     <div class="separator"/>
+    
+    <RegionalTrends v-if="loaded" :trendComparison="trendComparison" />
+    <div class="separator"/>
+
     <RelatedIndustries 
       v-if="loaded" 
       :occupation="occupation" 
@@ -16,6 +21,7 @@
 <script>
 import Summary from './OccupationComponents/Summary.vue'
 import RelatedIndustries from './OccupationComponents/RelatedIndustries.vue'
+import RegionalTrends from './OccupationComponents/RegionalTrends.vue'
 
 //import axios from 'axios';
 
@@ -24,7 +30,8 @@ export default {
   name: 'OccupationOverview',
   components: {
       Summary,
-      RelatedIndustries
+      RelatedIndustries,
+      RegionalTrends
   },
   data: function () {
     return {
@@ -33,7 +40,8 @@ export default {
       region:null,
       summary:null,
       jobsGrowth:null,
-      employingIndustries:null
+      employingIndustries:null,
+      trendComparison:null
     }
   },
   mounted: function () {
@@ -138,7 +146,7 @@ export default {
         this.region = response.data.region.title;
         this.summary = response.data.summary;
         this.employingIndustries = response.data.employing_industries;
-
+        this.trendComparison = response.data.trend_comparison;
 
         this.loaded=true;
 

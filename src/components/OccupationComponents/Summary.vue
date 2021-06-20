@@ -3,7 +3,7 @@
     <div class="container">
       <div class="row summary-border">
         <div class="col-md center">
-            <span class="summary-stat">{{summary.jobs.regional}}</span><br>
+            <span class="summary-stat">{{summary.jobs.regional.toLocaleString()}}</span><br>
             <span class="summary-label">Jobs ({{summary.jobs.year}})</span><br>
             <span class="summary-description">{{compareToNationalAvg()}}% <span id="jobs-avg">{{compareToNationalAvgText()}}</span> National Average</span>
         </div>

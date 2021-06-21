@@ -1,20 +1,26 @@
 <template>
   <div class="container"  id="summary">
     <h1><strong>Occupation Overview</strong></h1>
-    <span>{{this.occupation}} in {{this.region}}</span>
-    <div class="separator"/>
-    
-    <Summary v-if="loaded" :occupation="occupation" :summary="summary"/>
-    <div class="separator"/>
-    
-    <RegionalTrends v-if="loaded" :trendComparison="trendComparison" />
-    <div class="separator"/>
+    <div v-if="loaded">
+      <span>{{this.occupation}} in {{this.region}}</span>
+      <div class="separator"/>
 
-    <RelatedIndustries 
-      v-if="loaded" 
-      :occupation="occupation" 
-      :employingIndustries="employingIndustries"
-    />
+      <Summary :occupation="occupation" :summary="summary"/>
+      <div class="separator"/>
+
+      <RegionalTrends :trendComparison="trendComparison" />
+      <div class="separator"/>
+
+      <RelatedIndustries 
+        :occupation="occupation" 
+        :employingIndustries="employingIndustries"
+      />
+      </div>
+      <div v-else class="d-flex justify-content-center">
+        <div class="spinner-border text-primary" role="status">
+          <span class="sr-only"></span>
+      </div>
+    </div>
   </div>
 </template>
 

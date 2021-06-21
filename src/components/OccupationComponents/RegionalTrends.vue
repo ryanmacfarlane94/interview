@@ -44,17 +44,29 @@ import {GoogleCharts} from 'google-charts';
 
 export default {
   name: 'RegionalTrends',
+
   props: {
       trendComparison: Object
   },
+
+  created() {
+    window.addEventListener("resize", this.onResize);
+    },
+
+  unmounted() {
+    window.removeEventListener("resize", this.onResize);
+  },
+
   mounted: function () {
     GoogleCharts.load(this.drawChart);
   },
+
   methods: {
     getChange(data) {
         var change = data[data.length - 1] - data[0];
         return (change / data[0] * 100).toFixed(1).toLocaleString();
     },
+    
     drawChart() {
         const data = GoogleCharts.api.visualization.arrayToDataTable(this.getData());
         const chart = new GoogleCharts.api.visualization.LineChart(document.getElementById('chart'));
@@ -73,6 +85,7 @@ export default {
 
         chart.draw(data, options);
     },
+    
     getData() {
         var data = [
             ['Year','Region','State','Nation'],
@@ -88,6 +101,10 @@ export default {
             year++;
         }
         return data;
+    },
+
+    onResize() {
+        GoogleCharts.load(this.drawChart);
     }
   }
 }
